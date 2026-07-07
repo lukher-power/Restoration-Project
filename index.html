@@ -1,59 +1,196 @@
----
-layout: home
-background: '/img/bg-index.jpg'
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>The Digital Restoration Archive</title>
+	<meta name="description" content="An interactive web exhibit and Tableau dashboard exploring the dates, locations, themes, and historical settings of early Doctrine and Covenants revelations." />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<header class="hero">
+		<nav class="nav">
+			<div class="logo">Digital Restoration Archive</div>
+			<div class="nav-links">
+				<a href="#dashboard">Dashboard</a>
+				<a href="#context">Historical Context</a>
+				<a href="#method">Method</a>
+				<a href="#sources">Sources</a>
+			</div>
+		</nav>
 
-<section class="project-intro">
-	<p class="eyebrow">Project Overview</p>
-	<p class="lead">This exhibit combines historical context with an interactive Tableau dashboard to map the Doctrine and Covenants by date, place, recipient, and theme.</p>
-</section>
+		<section class="hero-content">
+			<p class="eyebrow">REL C 225 Digital Project</p>
+			<h1>The Digital Restoration Archive</h1>
+			<p class="subtitle">
+				An interactive web exhibit and Tableau dashboard exploring the dates, locations,
+				themes, and historical settings of early Doctrine and Covenants revelations.
+			</p>
+			<a class="button" href="#dashboard">View Dashboard</a>
+		</section>
+	</header>
 
-<section class="feature-grid" aria-label="Project highlights">
-	<article class="feature-card">
-		<p class="eyebrow">Chronology</p>
-		<h2>Follow the revelation timeline.</h2>
-		<p>Track how sections emerged across the formative years of the early Church and connect them to key moments of pressure, migration, and organization.</p>
-	</article>
-	<article class="feature-card">
-		<p class="eyebrow">Geography</p>
-		<h2>See where history happened.</h2>
-		<p>Use map views to connect revelations to Kirtland, Missouri, and other important sites in the restoration narrative.</p>
-	</article>
-	<article class="feature-card">
-		<p class="eyebrow">Themes</p>
-		<h2>Filter by doctrinal focus.</h2>
-		<p>Sort the dataset by stewardship, priesthood keys, opposition, governance, and other repeated topics in the curriculum.</p>
-	</article>
-</section>
+	<main>
+		<section class="section intro">
+			<div class="section-heading">
+				<p class="eyebrow">Project Overview</p>
+				<h2>Study selected revelations in context</h2>
+			</div>
+			<p>
+				This project organizes selected early revelations in the Doctrine and Covenants into a
+				structured dataset and visualizes them through an interactive Tableau dashboard. The goal
+				is to show how revelation came in specific historical moments, locations, and Church
+				circumstances.
+			</p>
 
-<section class="dashboard-panel">
-	<div class="section-heading">
-		<p class="eyebrow">Interactive Dashboard</p>
-		<h2>Tableau Public embed</h2>
-		<p>Add the published Tableau Public workbook URL to <code>tableau_public_url</code> in <code>_config.yml</code> to activate the live dashboard here.</p>
-	</div>
-	<div class="dashboard-frame">
-		{% if site.tableau_public_url %}
-		<iframe title="Digital Restoration Archive dashboard" src="{{ site.tableau_public_url }}" loading="lazy"></iframe>
-		{% else %}
-		<div class="dashboard-placeholder">
-			<h3>Dashboard placeholder</h3>
-			<p>Publish the workbook in Tableau Public, then paste the share link into the configuration file.</p>
-			<p>The embed should include a timeline, a map, and filters for revelation date, location, recipient, and theme.</p>
-		</div>
-		{% endif %}
-	</div>
-</section>
+			<div class="cards">
+				<article class="card">
+					<h3>Factual</h3>
+					<p>
+						The dataset identifies key people, places, dates, events, and themes connected to early
+						revelations.
+					</p>
+				</article>
 
-<section class="project-plan">
-	<article class="plan-card">
-		<p class="eyebrow">Course Fit</p>
-		<h2>Unit 5 and Unit 9</h2>
-		<p>The project focuses on the history and purpose of the Doctrine and Covenants and the tensions that shaped the Kirtland and Missouri periods.</p>
-	</article>
-	<article class="plan-card">
-		<p class="eyebrow">Research Workflow</p>
-		<h2>Build from primary and scholarly sources.</h2>
-		<p>Start with the Joseph Smith Papers, cross-check contextual narratives in Revelations in Context, and supplement analysis with BYU Religious Studies Center scholarship.</p>
-	</article>
-</section>
+				<article class="card">
+					<h3>Conceptual</h3>
+					<p>
+						The project uses historical and Church history sources to compare context, reliability,
+						and meaning.
+					</p>
+				</article>
+
+				<article class="card">
+					<h3>Application</h3>
+					<p>
+						The project connects early revelations about priesthood, stewardship, Zion, and Church
+						organization to the modern Church.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="dashboard" class="section dashboard-section">
+			<div class="section-heading">
+				<p class="eyebrow">Interactive Dashboard</p>
+				<h2>Tableau Public dashboard</h2>
+			</div>
+			<p>
+				Use the dashboard filters to explore revelations by date, location, recipient, theme, and
+				key historical context. Paste your Tableau Public embed code into the wrapper below.
+			</p>
+
+			<div class="tableau-wrapper">
+				<div class="tableau-embed">
+					<p class="tableau-note">Tableau dashboard embed goes here.</p>
+					<p>Open your published workbook in Tableau Public, click Share, copy the embed code, and paste it into this box.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="data" class="section data-section">
+			<div class="section-heading">
+				<p class="eyebrow">Dataset Preview</p>
+				<h2>Selected revelations</h2>
+			</div>
+			<div class="table-shell">
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th>Section</th>
+							<th>Date</th>
+							<th>Location</th>
+							<th>Recipient</th>
+							<th>Theme</th>
+						</tr>
+					</thead>
+					<tbody id="dataset-preview">
+						<tr>
+							<td colspan="5">Loading dataset preview...</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section id="context" class="section">
+			<div class="section-heading">
+				<p class="eyebrow">Historical Context</p>
+				<h2>Why these revelations matter</h2>
+			</div>
+
+			<div class="two-column">
+				<div class="info-panel">
+					<h3>Unit 5: History and Purpose of the Doctrine and Covenants</h3>
+					<p>
+						The Doctrine and Covenants is a collection of revelations received in real historical
+						circumstances. Mapping the sections by time and place helps show that these revelations
+						responded to specific needs in the Restoration.
+					</p>
+				</div>
+
+				<div class="info-panel">
+					<h3>Unit 9: Kirtland Opposition and Missouri Expulsion</h3>
+					<p>
+						Many revelations came during periods of opposition, migration, economic pressure, and
+						attempts to build Zion. Seeing the revelations geographically helps show the connection
+						between doctrine, hardship, and Church development.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="method" class="section method">
+			<div class="section-heading">
+				<p class="eyebrow">Research and Build Method</p>
+				<h2>How the project was assembled</h2>
+			</div>
+
+			<ol>
+				<li>Selected major Doctrine and Covenants revelations connected to early Church history.</li>
+				<li>Recorded dates, locations, recipients, themes, and short historical summaries.</li>
+				<li>Built a CSV dataset from historical and Church history sources.</li>
+				<li>Imported the dataset into Tableau Public.</li>
+				<li>Created map, timeline, theme, and section-detail visualizations.</li>
+				<li>Embedded the published dashboard into this public website.</li>
+			</ol>
+		</section>
+
+		<section id="sources" class="section sources">
+			<div class="section-heading">
+				<p class="eyebrow">Sources Consulted</p>
+				<h2>Primary and secondary research base</h2>
+			</div>
+
+			<ul>
+				<li>The Joseph Smith Papers Project</li>
+				<li>Revelations in Context: The Stories Behind the Revelations of the Doctrine and Covenants</li>
+				<li>BYU Religious Studies Center Digital Repository</li>
+				<li>Doctrine and Covenants section headings and historical notes</li>
+			</ul>
+		</section>
+
+		<section class="section reflection">
+			<div class="section-heading">
+				<p class="eyebrow">Reflection</p>
+				<h2>What the archive shows</h2>
+			</div>
+			<p>
+				Building this project helped me see the Doctrine and Covenants as more than a list of
+				revelations. The dashboard shows that revelation came in moments of decision, pressure,
+				growth, and uncertainty. Studying the revelations by date and location helped me better
+				understand how the Lord guided Joseph Smith and the early Saints step by step.
+			</p>
+		</section>
+	</main>
+
+	<footer>
+		<p>Created for REL C 225.</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
