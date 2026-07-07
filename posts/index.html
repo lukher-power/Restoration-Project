@@ -1,48 +1,28 @@
 ---
 layout: page
-title: Posts
+title: Revelation Archive
+description: Short exhibit entries that can be added after the dataset is finalized.
 background: '/img/bg-post.jpg'
 ---
 
-{% for post in paginator.posts %}
+<p class="lead">This archive is reserved for short exhibit entries once the data table is finalized. Each entry can focus on a single revelation, its setting, and the reason it matters in the larger story.</p>
 
-<article class="post-preview">
-  <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-    <h2 class="post-title">{{ post.title }}</h2>
-    {% if post.subtitle %}
-    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-    {% else %}
-    <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-    {% endif %}
-  </a>
-  <p class="post-meta">Posted by
-    {% if post.author %}
-    {{ post.author }}
-    {% else %}
-    {{ site.author }}
-    {% endif %}
-    on {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
-  </p>
-</article>
-
-<hr>
-
-{% endfor %}
-
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-
-<div class="clearfix">
-
-  {% if paginator.previous_page %}
-  <a class="btn btn-primary float-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
-    Newer<span class="d-none d-md-inline"> Posts</span></a>
-  {% endif %}
-
-  {% if paginator.next_page %}
-  <a class="btn btn-primary float-right" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older<span class="d-none d-md-inline"> Posts</span> &rarr;</a>
-  {% endif %}
-
+<div class="feature-grid project-scope-grid">
+  <article class="feature-card">
+    <p class="eyebrow">Planned Entry</p>
+    <h2>Section overview</h2>
+    <p>Explain what a revelation says and how the historical moment shaped it.</p>
+  </article>
+  <article class="feature-card">
+    <p class="eyebrow">Planned Entry</p>
+    <h2>Map context</h2>
+    <p>Show where the revelation belongs on the timeline and on the map.</p>
+  </article>
+  <article class="feature-card">
+    <p class="eyebrow">Planned Entry</p>
+    <h2>Theme summary</h2>
+    <p>Connect the section to priesthood, governance, stewardship, or opposition.</p>
+  </article>
 </div>
 
-{% endif %}
+<p class="mb-5">The current repository still includes sample blog posts from the original theme, but they are not part of the project presentation. Add new exhibit entries here once the dashboard data is ready.</p>

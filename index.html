@@ -2,3 +2,58 @@
 layout: home
 background: '/img/bg-index.jpg'
 ---
+
+<section class="project-intro">
+	<p class="eyebrow">Project Overview</p>
+	<p class="lead">This exhibit combines historical context with an interactive Tableau dashboard to map the Doctrine and Covenants by date, place, recipient, and theme.</p>
+</section>
+
+<section class="feature-grid" aria-label="Project highlights">
+	<article class="feature-card">
+		<p class="eyebrow">Chronology</p>
+		<h2>Follow the revelation timeline.</h2>
+		<p>Track how sections emerged across the formative years of the early Church and connect them to key moments of pressure, migration, and organization.</p>
+	</article>
+	<article class="feature-card">
+		<p class="eyebrow">Geography</p>
+		<h2>See where history happened.</h2>
+		<p>Use map views to connect revelations to Kirtland, Missouri, and other important sites in the restoration narrative.</p>
+	</article>
+	<article class="feature-card">
+		<p class="eyebrow">Themes</p>
+		<h2>Filter by doctrinal focus.</h2>
+		<p>Sort the dataset by stewardship, priesthood keys, opposition, governance, and other repeated topics in the curriculum.</p>
+	</article>
+</section>
+
+<section class="dashboard-panel">
+	<div class="section-heading">
+		<p class="eyebrow">Interactive Dashboard</p>
+		<h2>Tableau Public embed</h2>
+		<p>Add the published Tableau Public workbook URL to <code>tableau_public_url</code> in <code>_config.yml</code> to activate the live dashboard here.</p>
+	</div>
+	<div class="dashboard-frame">
+		{% if site.tableau_public_url %}
+		<iframe title="Digital Restoration Archive dashboard" src="{{ site.tableau_public_url }}" loading="lazy"></iframe>
+		{% else %}
+		<div class="dashboard-placeholder">
+			<h3>Dashboard placeholder</h3>
+			<p>Publish the workbook in Tableau Public, then paste the share link into the configuration file.</p>
+			<p>The embed should include a timeline, a map, and filters for revelation date, location, recipient, and theme.</p>
+		</div>
+		{% endif %}
+	</div>
+</section>
+
+<section class="project-plan">
+	<article class="plan-card">
+		<p class="eyebrow">Course Fit</p>
+		<h2>Unit 5 and Unit 9</h2>
+		<p>The project focuses on the history and purpose of the Doctrine and Covenants and the tensions that shaped the Kirtland and Missouri periods.</p>
+	</article>
+	<article class="plan-card">
+		<p class="eyebrow">Research Workflow</p>
+		<h2>Build from primary and scholarly sources.</h2>
+		<p>Start with the Joseph Smith Papers, cross-check contextual narratives in Revelations in Context, and supplement analysis with BYU Religious Studies Center scholarship.</p>
+	</article>
+</section>
