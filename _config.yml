@@ -2,8 +2,8 @@ title:              Digital Restoration Archive
 email:              
 description:        An interactive web exhibit and data dashboard of early modern revelations.
 author:             Digital Restoration Archive
-baseurl:            ""
-url:                "https://example.com"
+baseurl:            "/Restoration-Project"
+url:                "https://lukher-power.github.io"
 tableau_public_url: 
 
 # Social Profiles
