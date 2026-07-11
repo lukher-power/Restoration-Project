@@ -41,8 +41,8 @@ async function loadDatasetPreview() {
             <td>${entry.Section}</td>
             <td>${entry.Date}</td>
             <td>${entry.Location}</td>
-            <td>${entry.Primary_Recipient}</td>
-            <td>${entry.Primary_Theme}</td>
+            <td>${entry.Primary Recipient}</td>
+            <td>${entry.Primary Theme}</td>
           </tr>
         `,
       )

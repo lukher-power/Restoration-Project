@@ -38,7 +38,7 @@ a {
   min-height: 78vh;
   background:
     linear-gradient(rgba(15, 27, 46, 0.8), rgba(15, 27, 46, 0.8)),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+    url("https://philanthropies.churchofjesuschrist.org/contentassets/b0be2194d8dc4b58827569c942e2138a/kirtland-temple-sun.jpg");
   background-size: cover;
   background-position: center;
   color: white;
@@ -143,7 +143,7 @@ h1 {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
   margin-top: 32px;
 }
@@ -184,6 +184,19 @@ h1 {
   border-radius: 22px;
   padding: 18px;
   min-height: 650px;
+  overflow-x: hidden;
+}
+
+.tableau-wrapper .tableauPlaceholder,
+.tableau-wrapper .tableauViz,
+.tableau-wrapper iframe,
+.tableau-wrapper object {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.tableau-wrapper object {
+  display: block;
 }
 
 .tableau-embed {
