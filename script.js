@@ -1,56 +1,107 @@
 async function loadDatasetPreview() {
-  const tbody = document.getElementById("dataset-preview");
+  const tbody = document.getElementById("dataset-body");
+
+  if (!tbody) {
+    console.error('Could not find <tbody id="dataset-body">.');
+    return;
+  }
 
   try {
-    const response = await fetch("data/revelations.csv");
-    const csv = await response.text();
-    const [headerLine, ...rows] = csv.trim().split(/\r?\n/);
-    const headers = headerLine.split(",");
+    const response = await fetch("./data/revelations.csv");
 
-    const parsedRows = rows.map((row) => {
-      const values = [];
-      let current = "";
-      let insideQuotes = false;
+    if (!response.ok) {
+      throw new Error(`CSV request failed with status ${response.status}`);
+    }
 
-      for (let index = 0; index < row.length; index += 1) {
-        const character = row[index];
+    const csvText = await response.text();
+    const rows = parseCSV(csvText);
 
-        if (character === '"') {
-          insideQuotes = !insideQuotes;
-        } else if (character === "," && !insideQuotes) {
-          values.push(current);
-          current = "";
-        } else {
-          current += character;
-        }
-      }
+    if (rows.length < 2) {
+      throw new Error("The CSV does not contain any data rows.");
+    }
 
-      values.push(current);
+    const headers = rows[0].map((header) => header.trim());
+
+    const entries = rows.slice(1).map((values) => {
       const entry = {};
+
       headers.forEach((header, index) => {
-        entry[header] = (values[index] || "").replace(/^"|"$/g, "");
+        entry[header] = values[index]?.trim() || "";
       });
+
       return entry;
     });
 
-    tbody.innerHTML = parsedRows
+    tbody.innerHTML = entries
       .slice(0, 8)
       .map(
         (entry) => `
           <tr>
-            <td>${entry.Section}</td>
-            <td>${entry.Date}</td>
-            <td>${entry.Location}</td>
-            <td>${entry.Primary Recipient}</td>
-            <td>${entry.Primary Theme}</td>
+            <td>${entry["Section"] || ""}</td>
+            <td>${entry["Date"] || ""}</td>
+            <td>${entry["Location"] || ""}</td>
+            <td>${entry["Primary Recipient"] || entry["Recipient"] || ""}</td>
+            <td>${entry["Primary Theme"] || entry["Theme"] || ""}</td>
           </tr>
-        `,
+        `
       )
       .join("");
   } catch (error) {
-    tbody.innerHTML = '<tr><td colspan="5">Dataset preview unavailable.</td></tr>';
-    console.error("Unable to load data/revelations.csv", error);
+    console.error("Dataset preview error:", error);
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5">Unable to load dataset preview.</td>
+      </tr>
+    `;
   }
 }
 
-loadDatasetPreview();
+function parseCSV(csvText) {
+  const rows = [];
+  let row = [];
+  let value = "";
+  let insideQuotes = false;
+
+  for (let index = 0; index < csvText.length; index += 1) {
+    const character = csvText[index];
+    const nextCharacter = csvText[index + 1];
+
+    if (character === '"' && insideQuotes && nextCharacter === '"') {
+      value += '"';
+      index += 1;
+    } else if (character === '"') {
+      insideQuotes = !insideQuotes;
+    } else if (character === "," && !insideQuotes) {
+      row.push(value);
+      value = "";
+    } else if (
+      (character === "\n" || character === "\r") &&
+      !insideQuotes
+    ) {
+      if (character === "\r" && nextCharacter === "\n") {
+        index += 1;
+      }
+
+      row.push(value);
+
+      if (row.some((cell) => cell.trim() !== "")) {
+        rows.push(row);
+      }
+
+      row = [];
+      value = "";
+    } else {
+      value += character;
+    }
+  }
+
+  if (value !== "" || row.length > 0) {
+    row.push(value);
+    rows.push(row);
+  }
+
+  return rows;
+}
+
+document.addEventListener("DOMContentLoaded", loadDatasetPreview);
