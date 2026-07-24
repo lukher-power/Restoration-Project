@@ -20,7 +20,13 @@ async function loadDatasetPreview() {
       throw new Error("The CSV does not contain any data rows.");
     }
 
-    const headers = rows[0].map((header) => header.trim());
+    const headers = rows[0].map((header) =>
+  header
+    .replace(/^\uFEFF/, "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "")
+);
 
     const entries = rows.slice(1).map((values) => {
       const entry = {};
